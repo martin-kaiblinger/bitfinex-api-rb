@@ -142,5 +142,9 @@ module Bitfinex
       register_channel symbol: symbol, channel: "book", prec: precision, freq: frequency, len: length, &block
     end
 
+    def listen_orders(symbol="tBTCUSD", &block)
+      raise BlockMissingError unless block_given?
+      register_channel symbol: symbol, channel: "orders", &block
+    end
   end
 end
